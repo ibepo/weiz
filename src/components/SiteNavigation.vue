@@ -16,7 +16,14 @@
       <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-black">
           <h1 class="text-2xl">About</h1>
-          <h2 class="text-xl font-light ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur veritatis
+          <h2 class="text-xl font-light mt-2 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+            veritatis
+            blanditiis
+            atque eius reiciendis est natus, debitis itaque assumenda sapiente modi, porro vero voluptate id dignissimos,
+            exercitationem numquam optio facilis?</h2>
+          <h1 class="text-2xl mt-2 ">section2</h1>
+          <h2 class="text-xl font-light mt-1 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+            veritatis
             blanditiis
             atque eius reiciendis est natus, debitis itaque assumenda sapiente modi, porro vero voluptate id dignissimos,
             exercitationem numquam optio facilis?</h2>
