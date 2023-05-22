@@ -2,7 +2,7 @@
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
       <input
-        @input="getReachResult"
+        @input="getReachResults"
         v-model="searchQuery"
         type="text"
         placeholder="Search for a city or state"
@@ -29,19 +29,20 @@ const searchQuery = ref('')
 const queryTimeout = ref(null)
 const queryResults = ref(null)
 
-const getReachResult = () => {
+const getReachResults = () => {
   clearTimeout(queryTimeout.value)
   queryTimeout.value = setTimeout(async () => {
-    if (searchQuery.value != ' ') {
+    console.log(searchQuery.value)
+    if (searchQuery.value != '') {
       const rep = await axios.get(
         // `https://api.seniverse.com/v3/weather/now.json?key=${weatherKey}&location=${searchQuery.value}&language=zh-Hans&unit=c`
-        `https://api.seniverse.com/v3/location/search.json?key=${weatherKey}&q=${searchQuery.value}&limit=10&offset=10`
+        `https://api.seniverse.com/v3/location/search.json?key=${weatherKey}&q=${searchQuery.value}&limit=20&offset=10`
       )
       console.log(rep.data.results)
       queryResults.value = rep.data.results
       return
     }
     queryResults.value = null
-  }, 300)
+  }, 1000)
 }
 </script>
