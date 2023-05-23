@@ -50,10 +50,8 @@ const getReachResults = () => {
     if (searchQuery.value != '') {
       try {
         const rep = await axios.get(
-          // `https://api.seniverse.com/v3/weather/now.json?key=${weatherKey}&location=${searchQuery.value}&language=zh-Hans&unit=c`
           `https://api.seniverse.com/v3/location/search.json?key=${weatherKey}&q=${searchQuery.value}&limit=20&offset=10`
         )
-        // console.log(rep.data.results)
         queryResults.value = rep.data.results
         return
       } catch {
@@ -68,8 +66,6 @@ const getReachResults = () => {
 const previewCity = (searchResult) => {
   const [quyu, city] = searchResult.path.split(',')
   console.log(searchResult)
-  console.log(quyu, city)
-  // router.push({ name: 'cityView', params: { quyu: quyu, city: city } })
-  router.push({ name: 'cityView', query: { preview: false } })
+  router.push({ name: 'cityView', query: { preview: false, city } })
 }
 </script>
