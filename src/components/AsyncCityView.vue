@@ -14,16 +14,36 @@
     <hr class="border border-white border-opacity-10 w-full" />
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
-        <h2 class="mb-4">7天预报</h2>
-        <div class="flex overflow-x-scroll gap-10">
+        <h2 class="mb-8">7天预报</h2>
+        <div class="flex overflow-x-scroll gap-10 scrollbar-hide md:scrollbar-default">
           <div
             class="flex flex-col items-center gap-4"
             v-for="item in preWeathers"
             :key="item.date"
           >
-            <h2>{{ item.date }}</h2>
+            <h2 class="whitespace-nowrap">
+              {{ moment(item.date).format('MM-DD') }}
+            </h2>
             <h2 class="font-bold">{{ item.high }}</h2>
-            <h2 class="font-bold">{{ item.low }}</h2>
+            <h2>{{ item.low }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="border border-white border-opacity-10 w-full" />
+    <div class="max-w-screen-md w-full py-12">
+      <div class="mx-8 text-white">
+        <h2 class="mb-8">24小时预报</h2>
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between" v-for="item in preWeathers" :key="item.date">
+            <!-- <h2>{{ item.date }}</h2> -->
+            <h2 class="whitespace-nowrap">
+              {{ moment(item.date).format('MM-DD') }}
+            </h2>
+            <div class="flex gap-8">
+              <h2 class="font-bold">{{ item.high }}</h2>
+              <h2 class="font">{{ item.low }}</h2>
+            </div>
           </div>
         </div>
       </div>
@@ -33,6 +53,7 @@
 
 <script setup>
 import axios from 'axios'
+import moment from 'moment'
 import { useRoute } from 'vue-router'
 import { useNow, useDateFormat } from '@vueuse/core'
 const weatherKey = 'SG1AzKWIAHdgmDzqZ'
